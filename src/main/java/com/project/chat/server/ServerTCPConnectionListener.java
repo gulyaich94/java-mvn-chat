@@ -3,12 +3,15 @@ package com.project.chat.server;
 import com.project.chat.network.TCPConnection;
 import com.project.chat.network.TCPConnectionListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ServerTCPConnectionListener implements TCPConnectionListener {
 
-    private final List<TCPConnection> connections = new ArrayList<>();
+    private List<TCPConnection> connections;
+
+    public ServerTCPConnectionListener(List<TCPConnection> connections) {
+        this.connections = connections;
+    }
 
     @Override
     public synchronized void onConnectionReady(TCPConnection tcpConnection) {

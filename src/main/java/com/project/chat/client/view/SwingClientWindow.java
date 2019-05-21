@@ -27,8 +27,7 @@ public class SwingClientWindow extends JFrame implements ActionListener, ClientW
         });
     }
 
-    @Override
-    public void initWindow() {
+    private void initWindow() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(WIDTH, HEIGHT);
         setLocationRelativeTo(null);
