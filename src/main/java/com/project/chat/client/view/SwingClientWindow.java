@@ -1,12 +1,14 @@
 package com.project.chat.client.view;
 
 import com.project.chat.network.TCPConnection;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+@Component
 public class SwingClientWindow extends JFrame implements ActionListener, ClientWindow {
 
     private TCPConnection connection;

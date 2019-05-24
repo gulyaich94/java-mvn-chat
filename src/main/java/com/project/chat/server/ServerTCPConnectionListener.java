@@ -2,16 +2,15 @@ package com.project.chat.server;
 
 import com.project.chat.network.TCPConnection;
 import com.project.chat.network.TCPConnectionListener;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
+@Component
 public class ServerTCPConnectionListener implements TCPConnectionListener {
 
-    private List<TCPConnection> connections;
-
-    public ServerTCPConnectionListener(List<TCPConnection> connections) {
-        this.connections = connections;
-    }
+    private List<TCPConnection> connections = new CopyOnWriteArrayList<>();
 
     @Override
     public synchronized void onConnectionReady(TCPConnection tcpConnection) {

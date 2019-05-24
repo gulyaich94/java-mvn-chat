@@ -5,16 +5,15 @@ import com.project.chat.network.TCPConnection;
 import com.project.chat.network.TCPConnectionListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
+@Component
 public class ChatServer {
 
     private static final int SERVER_PORT = 8189;
-    private List<TCPConnection> connections = new CopyOnWriteArrayList<>();
 
     @Autowired
     private TCPConnectionListener serverTCPConnectionListener;
@@ -26,7 +25,6 @@ public class ChatServer {
 
         ChatServer chat = (ChatServer) ctx.getBean("chatServer");
         chat.runServer();
-
         ctx.close();
     }
 
@@ -35,7 +33,7 @@ public class ChatServer {
         try (ServerSocket serverSocket = new ServerSocket(SERVER_PORT)) {
             while (true) {
                 try {
-                    new TCPConnection(new ServerTCPConnectionListener(connections), serverSocket.accept());
+                    new TCPConnection(serverTCPConnectionListener, serverSocket.accept());
                 } catch (IOException e) {
                     System.out.println("TCPConnection exception: " + e);
                 }

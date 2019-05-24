@@ -3,11 +3,15 @@ package com.project.chat.client;
 import com.project.chat.client.view.ClientWindow;
 import com.project.chat.network.TCPConnection;
 import com.project.chat.network.TCPConnectionListener;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ClientTCPConnectionListener implements TCPConnectionListener {
 
     private ClientWindow clientWindow;
 
+    @Autowired
     public ClientTCPConnectionListener(ClientWindow clientWindow) {
         this.clientWindow = clientWindow;
     }

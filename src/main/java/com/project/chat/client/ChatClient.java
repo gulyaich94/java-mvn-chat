@@ -6,9 +6,11 @@ import com.project.chat.network.TCPConnection;
 import com.project.chat.network.TCPConnectionListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+@Component
 public class ChatClient {
 
     private static final String IP_ADDR = "10.113.250.60";
@@ -44,5 +46,4 @@ public class ChatClient {
     private void startClientWindowChat() {
         clientWindow.runChat(connection);
     }
-
 }
